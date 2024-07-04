@@ -1,6 +1,11 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import { RouterLink, RouterView } from "vue-router";
 import HelloWorld from "./components/HelloWorld.vue";
+import { MdEditor } from "md-editor-v3";
+import "md-editor-v3/lib/style.css";
+
+const text = ref("## Hello Editor!");
 </script>
 
 <template>
@@ -13,6 +18,7 @@ import HelloWorld from "./components/HelloWorld.vue";
       height="125"
     />
     <n-button>naive-ui</n-button>
+    <MdEditor v-model="text" />
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
