@@ -1,11 +1,16 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { MdPreview, MdCatalog } from "md-editor-v3";
 import "md-editor-v3/lib/preview.css";
+import axios from "axios";
 
-const content = ref(
-  "# 一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十\n## 二\n### 三\n#### 四\n##### 五\n###### 六\n### 七\n### 八\n### 九\n### 十\n### 十一\n### 十二\n### 十三\n### 十四\n### 十五\n### 十六\n### 十七\n### 十八\n### 十九\n### 二十\n### 二十一\n### 二十二\n### 二十三\n### 二十四\n### 二十五\n### 二十六\n### 二十七\n### 二十八\n### 二十九\n### 三十\n"
-);
+const content = ref();
+
+onMounted(() => {
+  axios.get("/note/test.md").then((response) => {
+    content.value = response.data;
+  });
+});
 </script>
 
 <template>
