@@ -1,1 +1,1 @@
-<template>LayoutContent</template>
+<template></template>

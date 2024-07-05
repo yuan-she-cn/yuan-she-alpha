@@ -18,7 +18,7 @@ import { RouterView } from "vue-router";
       >
         <LayoutSider />
       </n-layout-sider>
-      <n-layout-content>
+      <n-layout-content class="layout-content" :native-scrollbar="false">
         <RouterView />
       </n-layout-content>
     </n-layout>
@@ -27,6 +27,9 @@ import { RouterView } from "vue-router";
 
 <style scoped>
 .layout-sider {
+  height: calc(100vh - 64px);
+}
+.layout-content {
   height: calc(100vh - 64px);
 }
 </style>
