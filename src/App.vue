@@ -10,7 +10,12 @@ import { RouterView } from "vue-router";
       <LayoutHeader />
     </n-layout-header>
     <n-layout has-sider>
-      <n-layout-sider>
+      <n-layout-sider
+        class="layout-sider"
+        bordered
+        :native-scrollbar="false"
+        width="300"
+      >
         <LayoutSider />
       </n-layout-sider>
       <n-layout-content>
@@ -19,3 +24,9 @@ import { RouterView } from "vue-router";
     </n-layout>
   </n-layout>
 </template>
+
+<style scoped>
+.layout-sider {
+  height: calc(100vh - 64px);
+}
+</style>
