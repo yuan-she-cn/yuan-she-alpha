@@ -4,9 +4,9 @@ import axios from "axios";
 
 export const useStores = defineStore("stores", {
   state: () => ({
-    menu: {} as MenuOption,
+    menu: { key: "/list/system/OpenEuler.json" } as MenuOption,
     menus: [] as MenuOption[],
-    list: {} as MenuOption,
+    list: { key: "/note/system/OpenEuler/aa1.md" } as MenuOption,
     lists: [] as MenuOption[],
     content: "" as string,
   }),

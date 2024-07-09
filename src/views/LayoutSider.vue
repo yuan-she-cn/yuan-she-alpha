@@ -11,5 +11,9 @@ const menuOnUpdate = function (key: string, item: MenuOption) {
 </script>
 
 <template>
-  <n-menu :options="stores.lists" :on-update:value="menuOnUpdate"></n-menu>
+  <n-menu
+    :options="stores.lists"
+    :value="stores.list.key"
+    :on-update:value="menuOnUpdate"
+  ></n-menu>
 </template>

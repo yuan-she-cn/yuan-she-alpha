@@ -5,13 +5,27 @@ import { useStores } from "@/stores";
 
 const stores = useStores();
 
-const menuOnUpdate = function (key: string, item: MenuOption) {
+const menuOnUpdate = async function (key: string, item: MenuOption) {
   stores.menu.key = item.key;
-  stores.loadLists();
+  await stores.loadLists();
+  const listKey = getFirstMD(stores.lists);
+  stores.list.key = listKey;
+  await stores.loadContent();
+};
+
+const getFirstMD = function (items: MenuOption[]) {
+  const key = items[0].key as string;
+  if (key.endsWith(".md")) {
+    return key;
+  } else {
+    return getFirstMD(items[0].children as MenuOption[]);
+  }
 };
 
 onMounted(() => {
   stores.loadMenus();
+  stores.loadLists();
+  stores.loadContent();
 });
 </script>
 
@@ -24,8 +38,9 @@ onMounted(() => {
     <div class="menu-container">
       <div class="menu-div">
         <n-menu
-          :options="stores.menus"
           mode="horizontal"
+          :options="stores.menus"
+          :value="stores.menu.key"
           :on-update:value="menuOnUpdate"
         ></n-menu>
       </div>
