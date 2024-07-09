@@ -1,0 +1,26 @@
+[
+  {
+    "key": "/note/system/OpenEuler",
+    "label": "OpenEuler开始",
+    "children": [
+      {
+        "key": "/note/system/OpenEuler/aa1.md",
+        "label": "安装"
+      }
+    ]
+  },
+  {
+    "key": "/note/system/OPenEuler/bb",
+    "label": "配置",
+    "children": [
+      {
+        "key": "/note/system/OpenEuler/bb/bb2.md",
+        "label": "系统配置"
+      }
+    ]
+  },
+  {
+    "key": "/note/overtime.md",
+    "label": "服务"
+  }
+]

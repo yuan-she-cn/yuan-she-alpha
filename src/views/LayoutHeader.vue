@@ -1,11 +1,18 @@
 <script setup lang="ts">
+import { onMounted } from "vue";
 import type { MenuOption } from "naive-ui";
+import { useStores } from "@/stores";
 
-const menuOptions: MenuOption[] = [
-  { label: "首页", key: "1" },
-  { label: "文档", key: "2" },
-  { label: "组件", key: "3", children: [{ label: "组件一", key: "31" }] },
-];
+const stores = useStores();
+
+const menuOnUpdate = function (key: string, item: MenuOption) {
+  stores.menu.key = item.key;
+  stores.loadLists();
+};
+
+onMounted(() => {
+  stores.loadMenus();
+});
 </script>
 
 <template>
@@ -16,7 +23,11 @@ const menuOptions: MenuOption[] = [
     </div>
     <div class="menu-container">
       <div class="menu-div">
-        <n-menu :options="menuOptions" mode="horizontal"></n-menu>
+        <n-menu
+          :options="stores.menus"
+          mode="horizontal"
+          :on-update:value="menuOnUpdate"
+        ></n-menu>
       </div>
       <div class="search-div"><n-input placeholder="搜索"></n-input></div>
     </div>

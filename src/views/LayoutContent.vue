@@ -1,16 +1,9 @@
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
 import { MdPreview, MdCatalog } from "md-editor-v3";
 import "md-editor-v3/lib/preview.css";
-import axios from "axios";
+import { useStores } from "@/stores";
 
-const content = ref();
-
-onMounted(() => {
-  axios.get("/note/test.md").then((response) => {
-    content.value = response.data;
-  });
-});
+const stores = useStores();
 </script>
 
 <template>
@@ -18,7 +11,7 @@ onMounted(() => {
     <div class="md-preview-container">
       <n-scrollbar style="height: calc(100vh - 64px)">
         <div class="md-preview-content">
-          <MdPreview editorId="mdEditor" :modelValue="content" />
+          <MdPreview editorId="mdEditor" :modelValue="stores.content" />
         </div>
       </n-scrollbar>
     </div>
