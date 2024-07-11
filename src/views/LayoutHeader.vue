@@ -2,6 +2,8 @@
 import { onMounted } from "vue";
 import { darkTheme, type MenuOption } from "naive-ui";
 import { useStores } from "@/stores";
+import logoLight from "@/assets/logo-light.png";
+import logoDark from "@/assets/logo-dark.png";
 
 const stores = useStores();
 
@@ -29,13 +31,13 @@ const changeTheme = function () {
     stores.naiveTheme = null;
     stores.editorTheme = undefined;
     stores.borderColor = "rgb(239, 239, 245)";
-    stores.logoImg = "/src/assets/logo-light.png";
+    stores.logoImg = logoLight;
   } else {
     stores.themeName = "浅色";
     stores.naiveTheme = darkTheme;
     stores.editorTheme = "dark";
     stores.borderColor = "rgba(255, 255, 255, 0.09)";
-    stores.logoImg = "/src/assets/logo-dark.png";
+    stores.logoImg = logoDark;
   }
 };
 
