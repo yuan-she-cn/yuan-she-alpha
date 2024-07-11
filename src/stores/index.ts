@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import axios from "axios";
-import type { GlobalTheme, MenuOption } from "naive-ui";
+import type { GlobalTheme, MenuOption, SelectOption } from "naive-ui";
 import type { Themes } from "md-editor-v3";
 import logoLight from "@/assets/logo-light.png";
 
@@ -16,6 +16,7 @@ export const useStores = defineStore("stores", {
     list: { key: "/note/system/OpenEuler/aa1.md" } as MenuOption,
     lists: [] as MenuOption[],
     content: "" as string,
+    searchOptions: [] as SelectOption[],
   }),
   actions: {
     async loadMenus() {
@@ -31,6 +32,11 @@ export const useStores = defineStore("stores", {
     async loadContent() {
       await axios.get(this.list.key as string).then((response) => {
         this.content = response.data;
+      });
+    },
+    async loadSearchOptions() {
+      await axios.get("/search/index.json").then((response) => {
+        this.searchOptions = response.data;
       });
     },
   },

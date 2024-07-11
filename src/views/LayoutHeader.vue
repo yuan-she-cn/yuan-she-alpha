@@ -25,6 +25,14 @@ const getFirstMD = function (items: MenuOption[]): string {
   }
 };
 
+const searchOnUpdate = async function (value: string) {
+  const menuAndList = value.split("|");
+  stores.menu.key = menuAndList[0];
+  await stores.loadLists();
+  stores.list.key = menuAndList[1];
+  await stores.loadContent();
+};
+
 const changeTheme = function () {
   if (stores.naiveTheme) {
     stores.themeName = "深色";
@@ -53,6 +61,7 @@ onMounted(() => {
   stores.loadMenus();
   stores.loadLists();
   stores.loadContent();
+  stores.loadSearchOptions();
 });
 </script>
 
@@ -71,7 +80,19 @@ onMounted(() => {
           :on-update:value="menuOnUpdate"
         ></n-menu>
       </div>
-      <div class="search-div"><n-input placeholder="搜索"></n-input></div>
+      <div class="search-div">
+        <n-select
+          placeholder="搜索"
+          :show-arrow="false"
+          :consistent-menu-width="false"
+          :show-checkmark="false"
+          placement="bottom"
+          filterable
+          :options="stores.searchOptions"
+          :on-update:value="searchOnUpdate"
+        >
+        </n-select>
+      </div>
     </div>
     <div class="button-container">
       <n-button quaternary @click="changeTheme">
