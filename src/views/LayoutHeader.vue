@@ -8,12 +8,13 @@ const stores = useStores();
 const menuOnUpdate = async function (key: string, item: MenuOption) {
   stores.menu.key = item.key;
   await stores.loadLists();
+  // @ts-ignore
   const listKey = getFirstMD(stores.lists);
   stores.list.key = listKey;
   await stores.loadContent();
 };
 
-const getFirstMD = function (items: MenuOption[]) {
+const getFirstMD = function (items: MenuOption[]): string {
   const key = items[0].key as string;
   if (key.endsWith(".md")) {
     return key;
