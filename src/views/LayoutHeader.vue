@@ -22,6 +22,14 @@ const getFirstMD = function (items: MenuOption[]) {
   }
 };
 
+const gotoGitHub = function () {
+  window.open("https://github.com/yuan-she-cn/yuan-she-alpha");
+};
+
+const gotoGitee = function () {
+  window.open("https://gitee.com/yuan-she-cn/yuan-she-alpha");
+};
+
 onMounted(() => {
   stores.loadMenus();
   stores.loadLists();
@@ -47,10 +55,9 @@ onMounted(() => {
       <div class="search-div"><n-input placeholder="搜索"></n-input></div>
     </div>
     <div class="button-container">
-      <n-button quaternary>English</n-button>
       <n-button quaternary>深色</n-button>
-      <n-button quaternary>GitHub</n-button>
-      <n-button quaternary>2.38.2</n-button>
+      <n-button quaternary @click="gotoGitHub">GitHub</n-button>
+      <n-button quaternary @click="gotoGitee">Gitee</n-button>
     </div>
   </div>
 </template>
