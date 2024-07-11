@@ -11,11 +11,19 @@ const stores = useStores();
     <div class="md-preview-container">
       <n-scrollbar style="height: calc(100vh - 64px)">
         <div class="md-preview-content">
-          <MdPreview editorId="mdEditor" :modelValue="stores.content" />
+          <MdPreview
+            editorId="mdEditor"
+            :modelValue="stores.content"
+            :theme="stores.editorTheme"
+            style="background-color: transparent"
+          />
         </div>
       </n-scrollbar>
     </div>
-    <div class="md-catalog-container">
+    <div
+      class="md-catalog-container"
+      :style="{ borderLeftColor: stores.borderColor }"
+    >
       <n-scrollbar style="height: calc(100vh - 64px)">
         <div class="md-catalog-content">
           <MdCatalog
@@ -44,7 +52,8 @@ const stores = useStores();
   .md-catalog-container {
     box-sizing: border-box;
     width: 300px;
-    border-left: 1px solid #efeff5;
+    border-left-width: 1px;
+    border-left-style: solid;
     .md-catalog-content {
       padding: 16px;
     }

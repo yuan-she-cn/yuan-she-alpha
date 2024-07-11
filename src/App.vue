@@ -2,27 +2,32 @@
 import LayoutHeader from "@/views/LayoutHeader.vue";
 import LayoutSider from "@/views/LayoutSider.vue";
 import { RouterView } from "vue-router";
+import { useStores } from "@/stores";
+
+const stores = useStores();
 </script>
 
 <template>
-  <n-layout>
-    <n-layout-header>
-      <LayoutHeader />
-    </n-layout-header>
-    <n-layout has-sider>
-      <n-layout-sider
-        class="layout-sider"
-        bordered
-        :native-scrollbar="false"
-        width="300"
-      >
-        <LayoutSider />
-      </n-layout-sider>
-      <n-layout-content class="layout-content" :native-scrollbar="false">
-        <RouterView />
-      </n-layout-content>
+  <n-config-provider :theme="stores.naiveTheme">
+    <n-layout>
+      <n-layout-header>
+        <LayoutHeader />
+      </n-layout-header>
+      <n-layout has-sider>
+        <n-layout-sider
+          class="layout-sider"
+          bordered
+          :native-scrollbar="false"
+          width="300"
+        >
+          <LayoutSider />
+        </n-layout-sider>
+        <n-layout-content class="layout-content" :native-scrollbar="false">
+          <RouterView />
+        </n-layout-content>
+      </n-layout>
     </n-layout>
-  </n-layout>
+  </n-config-provider>
 </template>
 
 <style scoped>

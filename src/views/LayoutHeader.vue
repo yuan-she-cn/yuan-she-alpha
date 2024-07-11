@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
-import type { MenuOption } from "naive-ui";
+import { darkTheme, type MenuOption } from "naive-ui";
 import { useStores } from "@/stores";
 
 const stores = useStores();
@@ -22,6 +22,22 @@ const getFirstMD = function (items: MenuOption[]) {
   }
 };
 
+const changeTheme = function () {
+  if (stores.naiveTheme) {
+    stores.themeName = "深色";
+    stores.naiveTheme = null;
+    stores.editorTheme = undefined;
+    stores.borderColor = "rgb(239, 239, 245)";
+    stores.logoImg = "/src/assets/logo-light.png";
+  } else {
+    stores.themeName = "浅色";
+    stores.naiveTheme = darkTheme;
+    stores.editorTheme = "dark";
+    stores.borderColor = "rgba(255, 255, 255, 0.09)";
+    stores.logoImg = "/src/assets/logo-dark.png";
+  }
+};
+
 const gotoGitHub = function () {
   window.open("https://github.com/yuan-she-cn/yuan-she-alpha");
 };
@@ -38,9 +54,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="layout-header">
+  <div class="layout-header" :style="{ borderBottomColor: stores.borderColor }">
     <div class="logo-container">
-      <img class="logo" src="@/assets/logo.ico" />
+      <img class="logo" :src="stores.logoImg" />
       <span class="brand">猿社</span>
     </div>
     <div class="menu-container">
@@ -55,7 +71,9 @@ onMounted(() => {
       <div class="search-div"><n-input placeholder="搜索"></n-input></div>
     </div>
     <div class="button-container">
-      <n-button quaternary>深色</n-button>
+      <n-button quaternary @click="changeTheme">
+        {{ stores.themeName }}
+      </n-button>
       <n-button quaternary @click="gotoGitHub">GitHub</n-button>
       <n-button quaternary @click="gotoGitee">Gitee</n-button>
     </div>
@@ -67,7 +85,8 @@ onMounted(() => {
   box-sizing: border-box;
   width: 100vw;
   height: 64px;
-  border-bottom: 1px solid #efeff5;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -80,6 +99,8 @@ onMounted(() => {
     justify-content: flex-start;
     align-items: center;
     .logo {
+      width: 32px;
+      height: 32px;
     }
     .brand {
       box-sizing: border-box;
@@ -88,7 +109,6 @@ onMounted(() => {
       font-family: "SimSun";
       font-size: 24px;
       font-weight: 700;
-      color: #333639;
     }
   }
   .menu-container {
