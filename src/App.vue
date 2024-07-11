@@ -3,12 +3,17 @@ import LayoutHeader from "@/views/LayoutHeader.vue";
 import LayoutSider from "@/views/LayoutSider.vue";
 import { RouterView } from "vue-router";
 import { useStores } from "@/stores";
+import { dateZhCN, zhCN } from "naive-ui";
 
 const stores = useStores();
 </script>
 
 <template>
-  <n-config-provider :theme="stores.naiveTheme">
+  <n-config-provider
+    :theme="stores.naiveTheme"
+    :locale="zhCN"
+    :date-locale="dateZhCN"
+  >
     <n-layout>
       <n-layout-header>
         <LayoutHeader />
