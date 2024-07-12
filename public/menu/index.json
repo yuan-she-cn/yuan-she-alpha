@@ -1,26 +1,6 @@
 [
   {
-    "key": "system",
-    "label": "操作系统",
-    "children": [
-      {
-        "key": "/list/system/OpenEuler.json",
-        "label": "OpenEuler"
-      }
-    ]
-  },
-  {
-    "key": "database",
-    "label": "数据库",
-    "children": [
-      {
-        "key": "/list/database/PolarDB.json",
-        "label": "PolarDB"
-      }
-    ]
-  },
-  {
-    "key": "middleware",
-    "label": "中间件"
+    "key": "/list/system/OpenEuler.json",
+    "label": "OpenEuler"
   }
 ]

@@ -1,10 +1,6 @@
 [
   {
-    "value": "/list/system/OpenEuler.json|/note/system/OpenEuler/aa1.md",
-    "label": "OpenEuler | 安装"
-  },
-  {
-    "value": "/list/database/PolarDB.json|/note/database/PolarDB/b/b2.md",
-    "label": "PolarDB | 数据库配置"
+    "value": "/list/system/OpenEuler.json|/note/system/OpenEuler/preface.md",
+    "label": "OpenEuler | 前言"
   }
 ]

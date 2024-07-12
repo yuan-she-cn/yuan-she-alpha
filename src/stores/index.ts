@@ -13,7 +13,7 @@ export const useStores = defineStore("stores", {
     logoImg: logoLight as string,
     menu: { key: "/list/system/OpenEuler.json" } as MenuOption,
     menus: [] as MenuOption[],
-    list: { key: "/note/system/OpenEuler/aa1.md" } as MenuOption,
+    list: { key: "/note/system/OpenEuler/preface.md" } as MenuOption,
     lists: [] as MenuOption[],
     content: "" as string,
     searchOptions: [] as SelectOption[],
